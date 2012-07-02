@@ -1,5 +1,7 @@
 package com.monkey.duda.service;
 
+import com.monkey.control.MonkeyStarter;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -8,15 +10,17 @@ import android.util.Log;
 
 public class MonkeyService extends Service {
 
+	static MonkeyStarter mstart=new MonkeyStarter();
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		Log.d("MonkeyService", "activity started ");
+		
 	}
 	
 	@Override
 	public IBinder onBind(Intent intent) {
-		Log.d("MonkeyService", "first connection recieved :  ");
+		Log.d("MonkeyService", "first connectsdfion recieved :  ");
 		return binder;
 	}
 	
@@ -30,7 +34,8 @@ public class MonkeyService extends Service {
 		@Override
 		public String sendAndRecieveHello(String text) throws RemoteException {
 			Log.d("MonkeyService", text);
-			String ret="ola from Monkey Service";
+			String ret="ola from Monkasdasdey Service : "+
+					mstart.test();
 			return ret;
 		}
 	};
